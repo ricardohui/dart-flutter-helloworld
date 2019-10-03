@@ -17,6 +17,25 @@ class _NewTransactionState extends State<NewTransaction> {
 
   DateTime _selectedDate;
 
+  @override
+  void initState() {
+    // fetching data
+    print("initState()");
+    super.initState();
+  }
+
+  @override
+  void didUpdateWidget(NewTransaction oldWidget) {
+    print('didUpdateWidget()');
+    super.didUpdateWidget(oldWidget);
+  }
+
+  @override
+  void dispose() {
+    // cleaning listeners and connections
+    print('dispose()');
+  }
+
   void submitData() {
     print(_titleController.text);
     if (_amountController.text.isEmpty) {
