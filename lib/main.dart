@@ -146,28 +146,8 @@ class _MyHomePageState extends State<MyHomePage> {
     final isLandscape = mediaQuery.orientation == Orientation.landscape;
 
     final PreferredSizeWidget appBar = Platform.isIOS
-        ? CupertinoNavigationBar(
-            middle: Text(
-              "Personal Expenses",
-            ),
-            trailing: Row(
-              children: <Widget>[
-                GestureDetector(
-                  child: Icon(CupertinoIcons.add),
-                  onTap: () => _startAddNewTransaction(context),
-                )
-              ],
-            ),
-          )
-        : AppBar(
-            title: Text('Flutter App'),
-            actions: [
-              IconButton(
-                icon: Icon(Icons.add),
-                onPressed: () => _startAddNewTransaction(context),
-              )
-            ],
-          );
+        ? buildCupertinoNavigationBar(context)
+        : buildAppBar2(context);
     final txListWidget = Container(
         height:
             (MediaQuery.of(context).size.height - appBar.preferredSize.height) *
@@ -214,5 +194,35 @@ class _MyHomePageState extends State<MyHomePage> {
                 FloatingActionButtonLocation.centerFloat,
             appBar: appBar,
             body: pageBody);
+  }
+
+  AppBar buildAppBar2(BuildContext context) {
+    return AppBar(
+      title: Text(
+        'Flutter App',
+      ),
+      actions: [
+        IconButton(
+          icon: Icon(Icons.add),
+          onPressed: () => _startAddNewTransaction(context),
+        )
+      ],
+    );
+  }
+
+  CupertinoNavigationBar buildCupertinoNavigationBar(BuildContext context) {
+    return CupertinoNavigationBar(
+      middle: Text(
+        "Personal Expenses",
+      ),
+      trailing: Row(
+        children: <Widget>[
+          GestureDetector(
+            child: Icon(CupertinoIcons.add),
+            onTap: () => _startAddNewTransaction(context),
+          )
+        ],
+      ),
+    );
   }
 }
