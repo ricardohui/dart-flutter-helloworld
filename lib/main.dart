@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './category_meals_screen.dart';
 import './categories_screen.dart';
 
 void main() {
@@ -32,6 +33,7 @@ class _MyAppState extends State<MyApp> {
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ))),
+      routes: {'/category-meals': (ctx) => CategoryMealsScreen()},
     );
   }
 }
