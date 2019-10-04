@@ -33,7 +33,7 @@ class _MyAppState extends State<MyApp> {
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ))),
-      routes: {'/category-meals': (ctx) => CategoryMealsScreen()},
+      routes: {CategoryMealsScreen.routeName: (ctx) => CategoryMealsScreen()},
     );
   }
 }
