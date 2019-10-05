@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import './category_meals_screen.dart';
-import './categories_screen.dart';
+
+import './screens/category_meals_screen.dart';
+import './screens/categories_screen.dart';
+import './screens/meal_detail_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -33,7 +35,10 @@ class _MyAppState extends State<MyApp> {
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ))),
-      routes: {CategoryMealsScreen.routeName: (ctx) => CategoryMealsScreen()},
+      routes: {
+        MealDetailScreen.routeName: (ctx) => MealDetailScreen(),
+        CategoryMealsScreen.routeName: (ctx) => CategoryMealsScreen()
+      },
     );
   }
 }
