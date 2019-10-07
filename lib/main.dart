@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import './screens/tabs.screen.dart';
 
 import './screens/category_meals_screen.dart';
-import './screens/categories_screen.dart';
+
 import './screens/meal_detail_screen.dart';
 
 void main() {
@@ -16,7 +17,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: CategoriesScreen(),
+      // home: CategoriesScreen(),
       title: "DeliMeals",
       theme: ThemeData(
           primarySwatch: Colors.blue,
@@ -36,6 +37,7 @@ class _MyAppState extends State<MyApp> {
                 fontWeight: FontWeight.bold,
               ))),
       routes: {
+        '/': (ctx) => TabsScreen(),
         MealDetailScreen.routeName: (ctx) => MealDetailScreen(),
         CategoryMealsScreen.routeName: (ctx) => CategoryMealsScreen()
       },
