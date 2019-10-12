@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import './screens/products_overview_screen.dart';
+import './screens/product_detail_screen.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -12,13 +15,15 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-          appBar: AppBar(
-            title: Text('My First App'),
-          ),
-          body: Container(
-            child: Text('somethiing'),
-          )),
-    );
+        title: 'MyShop',
+        theme: ThemeData(
+          primarySwatch: Colors.purple,
+          accentColor: Colors.deepOrange,
+          fontFamily: 'Lato',
+        ),
+        home: ProductsOverviewScreen(),
+        routes: {
+          ProductDetailScreen.routeName: (ctx) => ProductDetailScreen(),
+        });
   }
 }
