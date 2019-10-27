@@ -1,24 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import './providers/great_places.dart';
+import './screens/places_list_screen.dart';
 
-void main() {
-  runApp(MyApp());
-}
+void main() => runApp(MyApp());
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   @override
-  _MyAppState createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-          appBar: AppBar(
-            title: Text('My First App'),
+    return ChangeNotifierProvider.value(
+      value: GreatPlaces(),
+      child: MaterialApp(
+          title: 'Great Places',
+          theme: ThemeData(
+            primarySwatch: Colors.indigo,
+            accentColor: Colors.amber,
           ),
-          body: Container(
-            child: Text('somethiing'),
-          )),
+          home: PlacesListScreen()),
     );
   }
 }
