@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart' as prefix0;
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../screens/product_detail_screen.dart';
 import '../providers/product.dart';
 import '../providers/cart.dart';
 import '../providers/auth.dart';
-import 'package:provider/provider.dart';
 
 class ProductItem extends StatelessWidget {
   // final String id;
@@ -28,12 +28,14 @@ class ProductItem extends StatelessWidget {
               arguments: product.id,
             );
           },
-          child: Image.network(
-            product.imageUrl,
+          child: FadeInImage(
+            placeholder: AssetImage('assets/images/product-placeholder.png'),
+            image: NetworkImage(product.imageUrl),
             fit: BoxFit.cover,
           ),
         ),
         footer: GridTileBar(
+          backgroundColor: Colors.black54,
           leading: Consumer<Product>(
             builder: (ctx, product, child) => IconButton(
               icon: Icon(
@@ -41,11 +43,13 @@ class ProductItem extends StatelessWidget {
               ),
               color: Theme.of(context).accentColor,
               onPressed: () {
-                product.toggleFavoriteStatus(authData.token, authData.userId);
+                product.toggleFavoriteStatus(
+                  authData.token,
+                  authData.userId,
+                );
               },
             ),
           ),
-          backgroundColor: Colors.black54,
           title: Text(
             product.title,
             textAlign: TextAlign.center,
@@ -56,20 +60,21 @@ class ProductItem extends StatelessWidget {
             ),
             onPressed: () {
               cart.addItem(product.id, product.price, product.title);
-              prefix0.Scaffold.of(context).hideCurrentSnackBar();
-              Scaffold.of(context).showSnackBar(SnackBar(
-                content: Text(
-                  'Added item to cart!',
-                  textAlign: TextAlign.center,
+              Scaffold.of(context).hideCurrentSnackBar();
+              Scaffold.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(
+                    'Added item to cart!',
+                  ),
+                  duration: Duration(seconds: 2),
+                  action: SnackBarAction(
+                    label: 'UNDO',
+                    onPressed: () {
+                      cart.removeSingleItem(product.id);
+                    },
+                  ),
                 ),
-                duration: Duration(seconds: 2),
-                action: SnackBarAction(
-                  label: 'UNDO',
-                  onPressed: () {
-                    cart.removeSingleItem(product.id);
-                  },
-                ),
-              ));
+              );
             },
             color: Theme.of(context).accentColor,
           ),
