@@ -12,25 +12,30 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   Widget buildColorBox(Color color) {
     return Expanded(
-        child: Container(
-      margin: EdgeInsets.all(20),
-      padding: EdgeInsets.all(30),
-      color: color,
-    ));
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border.all(width: 10, color: Colors.black38),
+          borderRadius: const BorderRadius.all(const Radius.circular(8)),
+          color: color,
+        ),
+        margin: EdgeInsets.all(20),
+        padding: EdgeInsets.all(30),
+      ),
+    );
   }
 
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-          appBar: AppBar(
+        appBar: AppBar(
           title: Text(
             'My First App',
             style: TextStyle(
               fontSize: 40,
             ),
           ),
-          ),
-          body: Container(
+        ),
+        body: Container(
             child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           textDirection: TextDirection.ltr,
@@ -68,7 +73,7 @@ class _MyAppState extends State<MyApp> {
               ],
             ),
           ],
-          )),
+        )),
       ),
     );
   }
