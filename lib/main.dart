@@ -10,23 +10,29 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  Widget _buildGrid() => GridView.extent(
-        maxCrossAxisExtent: 50,
-        padding: const EdgeInsets.all(4),
-        mainAxisSpacing: 10,
-        crossAxisSpacing: 40,
-        children: _buildGridTileList(30),
-      );
-
-  List<Container> _buildGridTileList(int count) => List.generate(
-      count,
-      (i) => Container(
+  Widget _buildGrid(int count) => GridView.builder(
+        padding: const EdgeInsets.all(10.0),
+        itemCount: count,
+        itemBuilder: (ctx, i) => Container(
           decoration: BoxDecoration(
             border: Border.all(width: 10, color: Colors.black38),
             borderRadius: const BorderRadius.all(const Radius.circular(8)),
-            color: Colors.blue,
+            color: Colors.greenAccent,
           ),
-          child: Text(i.toString())));
+          child: Center(
+            child: Text(
+              i.toString(),
+              style: TextStyle(fontSize: 24),
+            ),
+          ),
+        ),
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 3,
+          childAspectRatio: 4 / 3,
+          crossAxisSpacing: 10,
+          mainAxisSpacing: 10,
+        ),
+      );
 
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -35,7 +41,7 @@ class _MyAppState extends State<MyApp> {
             title: Text('My First App'),
           ),
           body: Container(
-            child: _buildGrid(),
+            child: _buildGrid(30),
           )),
     );
   }
