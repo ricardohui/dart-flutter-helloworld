@@ -10,6 +10,21 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  Column _buildButtonColumn(Color color, IconData icon, String label) {
+    return Column(
+      children: <Widget>[
+        Icon(
+          icon,
+          color: color,
+        ),
+        Container(
+          child: Text(label),
+        ),
+      ],
+    );
+  }
+
+  Widget build(BuildContext context) {
   Widget _titleSection = Container(
       padding: EdgeInsets.all(32.0),
       child: Row(
@@ -33,7 +48,17 @@ class _MyAppState extends State<MyApp> {
           Text('41')
         ],
       ));
-  Widget build(BuildContext context) {
+    Color color = Theme.of(context).primaryColor;
+    Widget _buttonSection = Container(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          _buildButtonColumn(color, Icons.call, ' CALL'),
+          _buildButtonColumn(color, Icons.near_me, ' ROUTE'),
+          _buildButtonColumn(color, Icons.share, ' SHARE'),
+        ],
+      ),
+    );
     return MaterialApp(
       title: 'Flutter layout demo',
       home: Scaffold(
@@ -41,7 +66,10 @@ class _MyAppState extends State<MyApp> {
             title: Text('Flutter layout demo'),
           ),
           body: Column(
-            children: <Widget>[_titleSection],
+            children: <Widget>[
+              _titleSection,
+              _buttonSection,
+            ],
           )),
     );
   }
