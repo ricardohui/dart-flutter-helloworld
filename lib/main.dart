@@ -77,7 +77,7 @@ class _MyAppState extends State<MyApp> {
           appBar: AppBar(
             title: Text('Flutter layout demo'),
           ),
-          body: Column(
+          body: ListView(
             children: <Widget>[
               Image.asset('images/lake.jpg',
                   width: 600, height: 240, fit: BoxFit.cover),
