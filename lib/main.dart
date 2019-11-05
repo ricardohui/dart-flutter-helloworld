@@ -25,29 +25,29 @@ class _MyAppState extends State<MyApp> {
   }
 
   Widget build(BuildContext context) {
-  Widget _titleSection = Container(
-      padding: EdgeInsets.all(32.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text('Oeschinen Lake Campground',
-                    style: TextStyle(fontWeight: FontWeight.bold)),
-                Text('Kandersteg, Switzerland',
-                    style: TextStyle(color: Colors.grey))
-              ],
+    Widget _titleSection = Container(
+        padding: EdgeInsets.all(32.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text('Oeschinen Lake Campground',
+                      style: TextStyle(fontWeight: FontWeight.bold)),
+                  Text('Kandersteg, Switzerland',
+                      style: TextStyle(color: Colors.grey))
+                ],
+              ),
             ),
-          ),
-          Icon(
-            Icons.star,
-            color: Colors.red,
-          ),
-          Text('41')
-        ],
-      ));
+            Icon(
+              Icons.star,
+              color: Colors.red,
+            ),
+            Text('41')
+          ],
+        ));
     Color color = Theme.of(context).primaryColor;
     Widget _buttonSection = Container(
       child: Row(
@@ -79,6 +79,8 @@ class _MyAppState extends State<MyApp> {
           ),
           body: Column(
             children: <Widget>[
+              Image.asset('images/lake.jpg',
+                  width: 600, height: 240, fit: BoxFit.cover),
               _titleSection,
               _buttonSection,
               textSection,
