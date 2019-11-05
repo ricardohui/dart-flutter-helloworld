@@ -10,6 +10,29 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  Widget _buildStack() => Stack(
+        alignment: const Alignment(0.6, 0.6),
+        children: [
+          CircleAvatar(
+            backgroundImage: AssetImage('images/pic.jpg'),
+            radius: 100,
+          ),
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.black45,
+            ),
+            child: Text(
+              'Mia B',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+            ),
+          ),
+        ],
+      );
+
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
@@ -17,7 +40,7 @@ class _MyAppState extends State<MyApp> {
             title: Text('My First App'),
           ),
           body: Container(
-            child: Text('somethiing'),
+            child: _buildStack(),
           )),
     );
   }
