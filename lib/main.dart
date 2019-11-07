@@ -11,7 +11,10 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
-    return MaterialApp(home: FirstRoute());
+    return MaterialApp(
+      initialRoute: '/',
+      routes: {'/': (ctx) => FirstRoute(), '/second': (ctx) => SecondRoute()},
+    );
   }
 }
 
@@ -26,12 +29,7 @@ class FirstRoute extends StatelessWidget {
         child: RaisedButton(
           child: Text('Open route'),
           onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => SecondRoute(),
-              ),
-            );
+            Navigator.pushNamed(context, '/second');
           },
         ),
       ),
