@@ -41,11 +41,7 @@ class _MyAppState extends State<MyApp> {
                 ],
               ),
             ),
-            Icon(
-              Icons.star,
-              color: Colors.red,
-            ),
-            Text('41')
+            FavoriteWidget(),
           ],
         ));
     Color color = Theme.of(context).primaryColor;
@@ -86,6 +82,51 @@ class _MyAppState extends State<MyApp> {
               textSection,
             ],
           )),
+    );
+  }
+}
+
+class FavoriteWidget extends StatefulWidget {
+  @override
+  _FavoriteWidgetState createState() => _FavoriteWidgetState();
+}
+
+class _FavoriteWidgetState extends State<FavoriteWidget> {
+  bool _isFavorited = true;
+  int _favoriteCount = 41;
+
+  void _toggleFavorite() {
+    setState(() {
+      if (_isFavorited) {
+        _favoriteCount -= 1;
+        _isFavorited = false;
+      } else {
+        _favoriteCount += 1;
+        _isFavorited = true;
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        Container(
+          padding: EdgeInsets.all(0),
+          child: IconButton(
+            color: Colors.red[500],
+            onPressed: _toggleFavorite,
+            icon: _isFavorited ? Icon(Icons.star) : Icon(Icons.star_border),
+          ),
+        ),
+        SizedBox(
+          width: 18,
+          child: Container(
+            child: Text('$_favoriteCount'),
+          ),
+        )
+      ],
     );
   }
 }
