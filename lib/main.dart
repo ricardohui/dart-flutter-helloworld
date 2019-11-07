@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 void main() {
   runApp(MyApp());
@@ -75,8 +76,13 @@ class _MyAppState extends State<MyApp> {
           ),
           body: ListView(
             children: <Widget>[
-              Image.asset('images/lake.jpg',
-                  width: 600, height: 240, fit: BoxFit.cover),
+              FadeInImage.memoryNetwork(
+                image:
+                    'https://cdn.pixabay.com/photo/2019/10/18/17/42/season-4559795_1280.jpg',
+                placeholder: kTransparentImage,
+              ),
+              // Image.asset('images/lake.jpg',
+              //     width: 600, height: 240, fit: BoxFit.cover),
               _titleSection,
               _buttonSection,
               textSection,
