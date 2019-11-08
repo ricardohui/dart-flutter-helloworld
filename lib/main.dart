@@ -1,24 +1,21 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
+void main() => runApp(LogoApp());
+
+class LogoApp extends StatefulWidget {
+  _LogoAppState createState() => _LogoAppState();
 }
 
-class MyApp extends StatefulWidget {
+class _LogoAppState extends State<LogoApp> {
   @override
-  _MyAppState createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-          appBar: AppBar(
-            title: Text('My First App'),
-          ),
-          body: Container(
-            child: Text('somethiing'),
-          )),
+    return Center(
+      child: Container(
+        margin: EdgeInsets.symmetric(vertical: 10),
+        height: 300,
+        width: 300,
+        child: FlutterLogo(),
+      ),
     );
   }
 }
