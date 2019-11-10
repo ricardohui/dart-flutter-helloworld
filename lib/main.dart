@@ -31,13 +31,13 @@ class _MyAppState extends State<MyApp> {
                       displayText: '9',
                     ),
                     Keypad(
-                      displayText: '9',
+                      displayText: '8',
                     ),
                     Keypad(
-                      displayText: '9',
+                      displayText: '7',
                     ),
                     Keypad(
-                      displayText: '9',
+                      displayText: '+',
                     ),
                   ],
                 ),
@@ -46,6 +46,15 @@ class _MyAppState extends State<MyApp> {
                     Keypad(
                       displayText: '6',
                     ),
+                    Keypad(
+                      displayText: '5',
+                    ),
+                    Keypad(
+                      displayText: '4',
+                    ),
+                    Keypad(
+                      displayText: '-',
+                    ),
                   ],
                 ),
                 Row(
@@ -53,12 +62,30 @@ class _MyAppState extends State<MyApp> {
                     Keypad(
                       displayText: '3',
                     ),
+                    Keypad(
+                      displayText: '2',
+                    ),
+                    Keypad(
+                      displayText: '1',
+                    ),
+                    Keypad(
+                      displayText: '*',
+                    ),
                   ],
                 ),
                 Row(
                   children: <Widget>[
                     Keypad(
                       displayText: 'C',
+                    ),
+                    Keypad(
+                      displayText: '0',
+                    ),
+                    Keypad(
+                      displayText: '=',
+                    ),
+                    Keypad(
+                      displayText: '/',
                     ),
                   ],
                 ),
