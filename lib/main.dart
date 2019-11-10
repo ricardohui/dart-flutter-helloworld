@@ -154,11 +154,17 @@ class Keypad extends StatelessWidget {
     return Container(
       width: (sizeData.width - 64) / 4,
       height: (sizeData.height - 228) / 4,
-      child: Center(
+      child: FlatButton(
+        child: Center(
           child: Text(
-        displayText,
-        style: TextStyle(fontSize: 36),
-      )),
+            displayText,
+            style: TextStyle(fontSize: 36),
+          ),
+        ),
+        onPressed: () {
+          handler(displayText);
+        },
+      ),
       margin: EdgeInsets.all(8),
       padding: EdgeInsets.all(32),
       color: Colors.blue,
