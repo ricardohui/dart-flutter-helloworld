@@ -30,91 +30,101 @@ class _MyAppState extends State<MyApp> {
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
             new DisplayBar(displayText: displayText),
-            Container(
-                child: Column(
-              children: <Widget>[
-                Row(
-                  children: <Widget>[
-                    Keypad(
-                      displayText: '9',
-                      handler: handleEvent,
+            Expanded(
+              child: Container(
+                  child: Column(
+                children: <Widget>[
+                  Expanded(
+                    child: Row(
+                      children: <Widget>[
+                        Keypad(
+                          displayText: '9',
+                          handler: handleEvent,
+                        ),
+                        Keypad(
+                          displayText: '8',
+                          handler: handleEvent,
+                        ),
+                        Keypad(
+                          displayText: '7',
+                          handler: handleEvent,
+                        ),
+                        Keypad(
+                          displayText: '+',
+                          handler: handleEvent,
+                        ),
+                      ],
                     ),
-                    Keypad(
-                      displayText: '8',
-                      handler: handleEvent,
+                  ),
+                  Expanded(
+                    child: Row(
+                      children: <Widget>[
+                        Keypad(
+                          displayText: '6',
+                          handler: handleEvent,
+                        ),
+                        Keypad(
+                          displayText: '5',
+                          handler: handleEvent,
+                        ),
+                        Keypad(
+                          displayText: '4',
+                          handler: handleEvent,
+                        ),
+                        Keypad(
+                          displayText: '-',
+                          handler: handleEvent,
+                        ),
+                      ],
                     ),
-                    Keypad(
-                      displayText: '7',
-                      handler: handleEvent,
+                  ),
+                  Expanded(
+                    child: Row(
+                      children: <Widget>[
+                        Keypad(
+                          displayText: '3',
+                          handler: handleEvent,
+                        ),
+                        Keypad(
+                          displayText: '2',
+                          handler: handleEvent,
+                        ),
+                        Keypad(
+                          displayText: '1',
+                          handler: handleEvent,
+                        ),
+                        Keypad(
+                          displayText: '*',
+                          handler: handleEvent,
+                        ),
+                      ],
                     ),
-                    Keypad(
-                      displayText: '+',
-                      handler: handleEvent,
+                  ),
+                  Expanded(
+                    child: Row(
+                      children: <Widget>[
+                        Keypad(
+                          displayText: 'C',
+                          handler: handleEvent,
+                        ),
+                        Keypad(
+                          displayText: '0',
+                          handler: handleEvent,
+                        ),
+                        Keypad(
+                          displayText: '=',
+                          handler: handleEvent,
+                        ),
+                        Keypad(
+                          displayText: '/',
+                          handler: handleEvent,
+                        ),
+                      ],
                     ),
-                  ],
-                ),
-                Row(
-                  children: <Widget>[
-                    Keypad(
-                      displayText: '6',
-                      handler: handleEvent,
-                    ),
-                    Keypad(
-                      displayText: '5',
-                      handler: handleEvent,
-                    ),
-                    Keypad(
-                      displayText: '4',
-                      handler: handleEvent,
-                    ),
-                    Keypad(
-                      displayText: '-',
-                      handler: handleEvent,
-                    ),
-                  ],
-                ),
-                Row(
-                  children: <Widget>[
-                    Keypad(
-                      displayText: '3',
-                      handler: handleEvent,
-                    ),
-                    Keypad(
-                      displayText: '2',
-                      handler: handleEvent,
-                    ),
-                    Keypad(
-                      displayText: '1',
-                      handler: handleEvent,
-                    ),
-                    Keypad(
-                      displayText: '*',
-                      handler: handleEvent,
-                    ),
-                  ],
-                ),
-                Row(
-                  children: <Widget>[
-                    Keypad(
-                      displayText: 'C',
-                      handler: handleEvent,
-                    ),
-                    Keypad(
-                      displayText: '0',
-                      handler: handleEvent,
-                    ),
-                    Keypad(
-                      displayText: '=',
-                      handler: handleEvent,
-                    ),
-                    Keypad(
-                      displayText: '/',
-                      handler: handleEvent,
-                    ),
-                  ],
-                ),
-              ],
-            ))
+                  ),
+                ],
+              )),
+            )
           ],
         )),
       ),
