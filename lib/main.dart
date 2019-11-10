@@ -151,23 +151,24 @@ class Keypad extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var sizeData = MediaQuery.of(context).size;
-    return Container(
-      width: (sizeData.width - 64) / 4,
-      height: (sizeData.height - 228) / 4,
-      child: FlatButton(
+    return FlatButton(
+      onPressed: () {
+        handler(displayText);
+      },
+      padding: EdgeInsets.all(32),
+      color: Colors.blue,
+      child: Container(
+        // width: (sizeData.width - 64) / 4,
+        // height: (sizeData.height - 228) / 4,
+        // margin: EdgeInsets.all(8),
+
         child: Center(
           child: Text(
             displayText,
             style: TextStyle(fontSize: 36),
           ),
         ),
-        onPressed: () {
-          handler(displayText);
-        },
       ),
-      margin: EdgeInsets.all(8),
-      padding: EdgeInsets.all(32),
-      color: Colors.blue,
     );
   }
 }
