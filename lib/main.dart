@@ -85,10 +85,10 @@ class Keypad extends StatelessWidget {
   Keypad({@required this.displayText});
   @override
   Widget build(BuildContext context) {
+    var sizeData = MediaQuery.of(context).size;
     return Container(
-      // TODO: media query for width of the device and deduct margin and set to the width and height of the button
-      width: 100,
-      height: 100,
+      width: (sizeData.width - 64) / 4,
+      height: (sizeData.height - 228) / 4,
       child: Center(
           child: Text(
         displayText,
