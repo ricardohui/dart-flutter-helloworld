@@ -12,6 +12,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   var displayText = '0';
+  var operationedStarted = true;
   var memorylastSecondDisplayText = '0';
   var operation = '';
   handleEvent(String value) {
@@ -56,6 +57,7 @@ class _MyAppState extends State<MyApp> {
               break;
             default:
           }
+          operationedStarted = false;
           memorylastSecondDisplayText = '0';
           operation = '';
         });
@@ -65,7 +67,12 @@ class _MyAppState extends State<MyApp> {
           if (displayText == '0') {
             displayText = value;
           } else {
-            displayText = displayText + value;
+            if (!operationedStarted) {
+              displayText = value;
+              operationedStarted = true;
+            } else {
+              displayText = displayText + value;
+            }
           }
         });
     }
