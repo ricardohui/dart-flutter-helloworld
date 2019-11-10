@@ -21,16 +21,30 @@ class _MyAppState extends State<MyApp> {
         body: Container(
             child: Column(
           children: <Widget>[
-            Text(
-              displayText,
-              style: TextStyle(fontSize: 72),
-              textAlign: TextAlign.right,
+            Container(
+              // TODO: set the display bar to full width
+              width: 300,
+              decoration: BoxDecoration(color: Colors.red),
+              child: Text(
+                displayText,
+                style: TextStyle(fontSize: 72),
+                textAlign: TextAlign.right,
+              ),
             ),
             Container(
                 child: Column(
               children: <Widget>[
                 Row(
                   children: <Widget>[
+                    Keypad(
+                      displayText: '9',
+                    ),
+                    Keypad(
+                      displayText: '9',
+                    ),
+                    Keypad(
+                      displayText: '9',
+                    ),
                     Keypad(
                       displayText: '9',
                     ),
@@ -72,6 +86,7 @@ class Keypad extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      // TODO: media query for width of the device and deduct margin and set to the width and height of the button
       width: 100,
       height: 100,
       child: Center(
