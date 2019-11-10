@@ -154,6 +154,7 @@ class Keypad extends StatelessWidget {
     var sizeData = MediaQuery.of(context).size;
     return Container(
       margin: EdgeInsets.all(4),
+      width: (sizeData.width - 32) / 4,
       child: RaisedButton(
         onPressed: () {
           handler(displayText);
@@ -161,10 +162,6 @@ class Keypad extends StatelessWidget {
         padding: EdgeInsets.all(12),
         color: Colors.blue,
         child: Container(
-          // width: (sizeData.width - 120) / 4,
-          // height: (sizeData.height - 331) / 4,
-          // margin: EdgeInsets.all(8),
-
           child: Center(
             child: Text(
               displayText,
