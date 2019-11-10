@@ -21,16 +21,7 @@ class _MyAppState extends State<MyApp> {
         body: Container(
             child: Column(
           children: <Widget>[
-            Container(
-              // TODO: set the display bar to full width
-              width: 300,
-              decoration: BoxDecoration(color: Colors.red),
-              child: Text(
-                displayText,
-                style: TextStyle(fontSize: 72),
-                textAlign: TextAlign.right,
-              ),
-            ),
+            new DisplayBar(displayText: displayText),
             Container(
                 child: Column(
               children: <Widget>[
@@ -75,6 +66,29 @@ class _MyAppState extends State<MyApp> {
             ))
           ],
         )),
+      ),
+    );
+  }
+}
+
+class DisplayBar extends StatelessWidget {
+  const DisplayBar({
+    Key key,
+    @required this.displayText,
+  }) : super(key: key);
+
+  final String displayText;
+
+  @override
+  Widget build(BuildContext context) {
+    var sizeData = MediaQuery.of(context).size;
+    return Container(
+      width: sizeData.width,
+      decoration: BoxDecoration(color: Colors.red),
+      child: Text(
+        displayText,
+        style: TextStyle(fontSize: 72),
+        textAlign: TextAlign.right,
       ),
     );
   }
