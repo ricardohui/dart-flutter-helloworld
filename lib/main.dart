@@ -12,6 +12,13 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   var displayText = '0';
+
+  handleEvent(String value) {
+    setState(() {
+      displayText = value;
+    });
+  }
+
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
@@ -29,15 +36,19 @@ class _MyAppState extends State<MyApp> {
                   children: <Widget>[
                     Keypad(
                       displayText: '9',
+                      handler: handleEvent,
                     ),
                     Keypad(
                       displayText: '8',
+                      handler: handleEvent,
                     ),
                     Keypad(
                       displayText: '7',
+                      handler: handleEvent,
                     ),
                     Keypad(
                       displayText: '+',
+                      handler: handleEvent,
                     ),
                   ],
                 ),
@@ -45,15 +56,19 @@ class _MyAppState extends State<MyApp> {
                   children: <Widget>[
                     Keypad(
                       displayText: '6',
+                      handler: handleEvent,
                     ),
                     Keypad(
                       displayText: '5',
+                      handler: handleEvent,
                     ),
                     Keypad(
                       displayText: '4',
+                      handler: handleEvent,
                     ),
                     Keypad(
                       displayText: '-',
+                      handler: handleEvent,
                     ),
                   ],
                 ),
@@ -61,15 +76,19 @@ class _MyAppState extends State<MyApp> {
                   children: <Widget>[
                     Keypad(
                       displayText: '3',
+                      handler: handleEvent,
                     ),
                     Keypad(
                       displayText: '2',
+                      handler: handleEvent,
                     ),
                     Keypad(
                       displayText: '1',
+                      handler: handleEvent,
                     ),
                     Keypad(
                       displayText: '*',
+                      handler: handleEvent,
                     ),
                   ],
                 ),
@@ -77,15 +96,19 @@ class _MyAppState extends State<MyApp> {
                   children: <Widget>[
                     Keypad(
                       displayText: 'C',
+                      handler: handleEvent,
                     ),
                     Keypad(
                       displayText: '0',
+                      handler: handleEvent,
                     ),
                     Keypad(
                       displayText: '=',
+                      handler: handleEvent,
                     ),
                     Keypad(
                       displayText: '/',
+                      handler: handleEvent,
                     ),
                   ],
                 ),
@@ -123,7 +146,8 @@ class DisplayBar extends StatelessWidget {
 
 class Keypad extends StatelessWidget {
   final String displayText;
-  Keypad({@required this.displayText});
+  final Function handler;
+  Keypad({@required this.displayText, @required this.handler});
   @override
   Widget build(BuildContext context) {
     var sizeData = MediaQuery.of(context).size;
