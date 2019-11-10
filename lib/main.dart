@@ -12,11 +12,63 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   var displayText = '0';
-
+  var memorylastSecondDisplayText = '0';
+  var operation = '';
   handleEvent(String value) {
-    setState(() {
-      displayText = value;
-    });
+    switch (value) {
+      case 'C':
+        setState(() {
+          displayText = '0';
+        });
+        break;
+      case '+':
+      case '-':
+      case '*':
+      case '/':
+        operation = value;
+        memorylastSecondDisplayText = displayText;
+        setState(() {
+          displayText = '0';
+        });
+        break;
+      case '=':
+        setState(() {
+          switch (operation) {
+            case '+':
+              final result = int.parse(memorylastSecondDisplayText) +
+                  int.parse(displayText);
+              displayText = result.toString();
+              break;
+            case '-':
+              final result = int.parse(memorylastSecondDisplayText) -
+                  int.parse(displayText);
+              displayText = result.toString();
+              break;
+            case '*':
+              final result = int.parse(memorylastSecondDisplayText) *
+                  int.parse(displayText);
+              displayText = result.toString();
+              break;
+            case '/':
+              final result = int.parse(memorylastSecondDisplayText) *
+                  int.parse(displayText);
+              displayText = result.toString();
+              break;
+            default:
+          }
+          memorylastSecondDisplayText = '0';
+          operation = '';
+        });
+        break;
+      default:
+        setState(() {
+          if (displayText == '0') {
+            displayText = value;
+          } else {
+            displayText = displayText + value;
+          }
+        });
+    }
   }
 
   Widget build(BuildContext context) {
