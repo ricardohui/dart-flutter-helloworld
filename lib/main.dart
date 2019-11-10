@@ -27,6 +27,7 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Container(
             child: Column(
+          mainAxisSize: MainAxisSize.max,
           children: <Widget>[
             new DisplayBar(displayText: displayText),
             Container(
@@ -151,21 +152,24 @@ class Keypad extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var sizeData = MediaQuery.of(context).size;
-    return FlatButton(
-      onPressed: () {
-        handler(displayText);
-      },
-      padding: EdgeInsets.all(32),
-      color: Colors.blue,
-      child: Container(
-        // width: (sizeData.width - 64) / 4,
-        // height: (sizeData.height - 228) / 4,
-        // margin: EdgeInsets.all(8),
+    return Container(
+      margin: EdgeInsets.all(4),
+      child: RaisedButton(
+        onPressed: () {
+          handler(displayText);
+        },
+        padding: EdgeInsets.all(12),
+        color: Colors.blue,
+        child: Container(
+          // width: (sizeData.width - 120) / 4,
+          // height: (sizeData.height - 331) / 4,
+          // margin: EdgeInsets.all(8),
 
-        child: Center(
-          child: Text(
-            displayText,
-            style: TextStyle(fontSize: 36),
+          child: Center(
+            child: Text(
+              displayText,
+              style: TextStyle(fontSize: 36),
+            ),
           ),
         ),
       ),
