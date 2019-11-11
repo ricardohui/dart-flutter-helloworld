@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import './home_screen.dart';
+import './about_screen.dart';
+import './contact_screen.dart';
+import './products_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,30 +16,12 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('My First App'),
-        ),
-        body: Container(
-          child: Text('somethiing'),
-        ),
-        drawer: MainDrawer(),
-      ),
+      routes: {
+        '/': (ctx) => Home(),
+        Products.routeName: (ctx) => Products(),
+        ContactUs.routeName: (ctx) => ContactUs(),
+        About.routeName: (ctx) => About()
+      },
     );
-  }
-}
-
-class MainDrawer extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
-        child: Column(
-      children: <Widget>[
-        Text('Home'),
-        Text('About'),
-        Text('Products'),
-        Text('Contact Us'),
-      ],
-    ));
   }
 }
