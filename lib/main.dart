@@ -31,14 +31,22 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final counterData = Provider.of<Counter>(context);
-    final count = counterData.count;
+    final counterValue = Consumer<Counter>(
+      builder: (context, counter, child) {
+        return Text('${counter.count}');
+      },
+    );
+    // final counterData = Provider.of<Counter>(context);
+    // final count = counterData.count;
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () =>
-            Provider.of<Counter>(context, listen: false).increment(),
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
+      floatingActionButton: Consumer<Counter>(
+        builder: (context, counter, child) {
+          return FloatingActionButton(
+            onPressed: () => counter.increment(),
+            tooltip: 'Increment',
+            child: Icon(Icons.add),
+          );
+        },
       ),
       appBar: AppBar(
         title: Text('My First App'),
@@ -48,7 +56,7 @@ class MainScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text('You have pushed the button this many time:'),
-            Text('$count'),
+            counterValue,
           ],
         ),
       ),
