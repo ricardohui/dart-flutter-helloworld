@@ -31,9 +31,11 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final counterData = Provider.of<Counter>(context);
+    final count = counterData.count;
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () => print('pressed'),
+        onPressed: () => counterData.increment(),
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ),
@@ -45,7 +47,7 @@ class MainScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text('You have pushed the button this many time:'),
-            Text('0'),
+            Text('$count'),
           ],
         ),
       ),
