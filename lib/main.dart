@@ -33,7 +33,10 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final counterValue = Consumer<Counter>(
       builder: (context, counter, child) {
-        return Text('${counter.count}');
+        return Text(
+          '${counter.count}',
+          style: Theme.of(context).textTheme.display1,
+        );
       },
     );
     // final counterData = Provider.of<Counter>(context);
