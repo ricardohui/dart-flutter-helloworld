@@ -35,7 +35,8 @@ class MainScreen extends StatelessWidget {
     final count = counterData.count;
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () => counterData.increment(),
+        onPressed: () =>
+            Provider.of<Counter>(context, listen: false).increment(),
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ),
