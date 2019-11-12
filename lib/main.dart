@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_complete_guide/tab_screen.dart';
 import './categories_screen.dart';
 import './favorites_screen.dart';
 
@@ -15,8 +16,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       routes: {
-        '/': (ctx) => CategoriesScreen(),
-        '/favorites': (ctx) => FavoritesScreen(),
+        '/': (ctx) => TabsScreen(),
       },
     );
   }
