@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import './categories_screen.dart';
+import './favorites_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,13 +14,10 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-          appBar: AppBar(
-            title: Text('My First App'),
-          ),
-          body: Container(
-            child: Text('somethiing'),
-          )),
+      routes: {
+        '/': (ctx) => CategoriesScreen(),
+        '/favorites': (ctx) => FavoritesScreen(),
+      },
     );
   }
 }
