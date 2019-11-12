@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import './models/counter.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,10 +13,13 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Provider Demo',
-      theme: ThemeData(primarySwatch: Colors.red),
-      home: new MainScreen(),
+    return ChangeNotifierProvider(
+      builder: (ctx) => Counter(),
+      child: MaterialApp(
+        title: 'Provider Demo',
+        theme: ThemeData(primarySwatch: Colors.red),
+        home: new MainScreen(),
+      ),
     );
   }
 }
