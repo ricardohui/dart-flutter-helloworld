@@ -1,20 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+import 'package:provider/provider.dart';
 import './models/posts.dart';
-import 'dart:convert';
 
 void main() {
   runApp(MyApp());
-}
-
-Future<Post> fetchPost() async {
-  final response =
-      await http.get('https://jsonplaceholder.typicode.com/posts/1');
-  if (response.statusCode == 200) {
-    return Post.fromJson(json.decode(response.body));
-  } else {
-    throw Exception('Failed to load post');
-  }
 }
 
 class MyApp extends StatefulWidget {
@@ -23,32 +12,48 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  Future<Post> post;
+  Widget build(BuildContext context) {
+    return ChangeNotifierProvider(
+      builder: (ctx) => Post(),
+      child: MaterialApp(
+        home: Scaffold(
+            appBar: AppBar(
+              title: Text('Fetch Data Example'),
+            ),
+            body: PostDetailScreen()),
+      ),
+    );
+  }
+}
+
+class PostDetailScreen extends StatefulWidget {
+  @override
+  _PostDetailScreenState createState() => _PostDetailScreenState();
+}
+
+class _PostDetailScreenState extends State<PostDetailScreen> {
+  Future<Post> postFuture;
 
   @override
   initState() {
     super.initState();
-    post = fetchPost();
+    postFuture = Provider.of<Post>(context, listen: false).fetchPost();
   }
 
+  @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Fetch Data Example'),
-        ),
-        body: Center(
-          child: FutureBuilder<Post>(
-              future: post,
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  return Text(snapshot.data.title);
-                } else if (snapshot.hasError) {
-                  return Text('${snapshot.error}');
-                }
-                return CircularProgressIndicator();
-              }),
-        ),
+    return Container(
+      child: Center(
+        child: FutureBuilder<Post>(
+            future: postFuture,
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return Text(snapshot.data.title);
+              } else if (snapshot.hasError) {
+                return Text('${snapshot.error}');
+              }
+              return CircularProgressIndicator();
+            }),
       ),
     );
   }
