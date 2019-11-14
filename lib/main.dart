@@ -53,6 +53,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
       child: Column(
         children: <Widget>[
           TextFormField(
+            autofocus: true,
             controller: aTextFieldController,
             decoration: InputDecoration(labelText: 'Title', hintText: 'Hint'),
             validator: (value) {
@@ -61,6 +62,10 @@ class _MyCustomFormState extends State<MyCustomForm> {
               }
               return null;
             },
+          ),
+          TextField(
+            decoration:
+                InputDecoration(labelText: 'Description', hintText: 'Hint'),
           ),
           RaisedButton(
             onPressed: () {
