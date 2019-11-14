@@ -30,9 +30,11 @@ class MyCustomForm extends StatefulWidget {
 class _MyCustomFormState extends State<MyCustomForm> {
   final aTextFieldController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  final _descriptionFocusNode = FocusNode();
   @override
   void dispose() {
     aTextFieldController.dispose();
+    _descriptionFocusNode.dispose();
     super.dispose();
   }
 
@@ -56,6 +58,9 @@ class _MyCustomFormState extends State<MyCustomForm> {
             autofocus: true,
             controller: aTextFieldController,
             decoration: InputDecoration(labelText: 'Title', hintText: 'Hint'),
+            onFieldSubmitted: (_) {
+              FocusScope.of(context).requestFocus(_descriptionFocusNode);
+            },
             validator: (value) {
               if (value.isEmpty) {
                 return 'Please enter some text';
@@ -64,6 +69,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
             },
           ),
           TextField(
+            focusNode: _descriptionFocusNode,
             decoration:
                 InputDecoration(labelText: 'Description', hintText: 'Hint'),
           ),
