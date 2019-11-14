@@ -28,7 +28,24 @@ class MyCustomForm extends StatefulWidget {
 }
 
 class _MyCustomFormState extends State<MyCustomForm> {
+  final aTextFieldController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  @override
+  void dispose() {
+    aTextFieldController.dispose();
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    aTextFieldController.addListener(_printLatestValue);
+  }
+
+  void _printLatestValue() {
+    print("Second text field: ${aTextFieldController.text}");
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -36,9 +53,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
       child: Column(
         children: <Widget>[
           TextFormField(
-            onChanged: (text) {
-              print('input value: $text');
-            },
+            controller: aTextFieldController,
             decoration: InputDecoration(labelText: 'Title', hintText: 'Hint'),
             validator: (value) {
               if (value.isEmpty) {
