@@ -36,10 +36,24 @@ class _MyCustomFormState extends State<MyCustomForm> {
       child: Column(
         children: <Widget>[
           TextFormField(
-            decoration: InputDecoration(labelText: 'Title'),
+            decoration: InputDecoration(labelText: 'Title', hintText: 'Hint'),
+            validator: (value) {
+              if (value.isEmpty) {
+                return 'Please enter some text';
+              }
+              return null;
+            },
           ),
           RaisedButton(
-            onPressed: () {},
+            onPressed: () {
+              if (_formKey.currentState.validate()) {
+                Scaffold.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('Processing data'),
+                  ),
+                );
+              }
+            },
             child: Text('Submit'),
           ),
         ],
