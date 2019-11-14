@@ -36,6 +36,9 @@ class _MyCustomFormState extends State<MyCustomForm> {
       child: Column(
         children: <Widget>[
           TextFormField(
+            onChanged: (text) {
+              print('input value: $text');
+            },
             decoration: InputDecoration(labelText: 'Title', hintText: 'Hint'),
             validator: (value) {
               if (value.isEmpty) {
