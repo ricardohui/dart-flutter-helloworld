@@ -269,6 +269,7 @@ class ProductsRepository {
       price: 58,
     ),
   ];
+
   static List<Product> loadProducts(Category category) {
     if (category == Category.all) {
       return _allProducts;
